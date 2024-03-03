@@ -1,0 +1,15 @@
+version: '3'
+services:
+  api:
+    build: ./
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+  mongodb:
+    image: mongodb/mongodb-community-server:6.0-ubi8
+    user: 1000:1000
+    environment:
+      - MONGODB_INITDB_ROOT_USERNAME=taesuser
+      - MONGODB_INITDB_ROOT_PASSWORD=taespassword
+    volumes:
+      - ./data:/data/db
