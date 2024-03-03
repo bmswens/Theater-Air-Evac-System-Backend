@@ -2,11 +2,13 @@ version: '3'
 services:
   api:
     build: ./
+    container_name: taes-api
     restart: unless-stopped
     ports:
-      - 3000:3000
+      - 3002:3000
   mongodb:
     image: mongodb/mongodb-community-server:6.0-ubi8
+    container_name: mongodb
     user: 1000:1000
     environment:
       - MONGODB_INITDB_ROOT_USERNAME=taesuser

@@ -2,6 +2,7 @@
 const express = require('express')
 const httpErrors = require('http-errors')
 const pino = require('pino')
+var cors = require('cors')
 const pinoHttp = require('pino-http')
 
 module.exports = function main (options, cb) {
@@ -41,7 +42,7 @@ module.exports = function main (options, cb) {
 
   // Create the express app
   const app = express()
-
+  app.use(cors())
 
   // Common middleware
   // app.use(/* ... */)
