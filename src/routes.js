@@ -2,11 +2,13 @@
 const simple = require('./handlers/simple')
 const configured = require('./handlers/configured')
 const express = require('express')
+var bodyParser = require('body-parser')
 const patients = require('./handlers/patients')
 
 module.exports = function (app, opts) {
   // Setup routes, middleware, and handlers
   app.use(express.json())
+  app.use(bodyParser({limit: '50mb'}))
   app.get('/', simple)
   app.get('/configured', configured(opts))
   app.get('/patients', patients.getAll)
